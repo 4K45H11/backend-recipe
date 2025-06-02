@@ -1,14 +1,20 @@
 const express = require('express')
-
+const cors = require('cors')
 const {initializeDatabase} = require('./db/db.connect')
 const recipe = require('./model/recipe.model')
 initializeDatabase()
 
 const PORT = 3000
+const corsObject = {
+    origin: "*",
+    credentials: true,  
+    methods: ["POST", "GET"]
+};
+
 
 const app = express()
 app.use(express.json())
-
+app.use(cors(corsObject))
 
 
 
